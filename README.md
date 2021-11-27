@@ -34,9 +34,17 @@ $ set --show underbar
 ```
 > $underbar: set in global scope, unexported, with 2 elements  
 > $underbar[1]: |foo|  
-> $underbar[2]: |bar|
+> $underbar[2]: |bar|  
 
-You can toggle off by press the binding key again.
+By pressing the binding key again, the wrap is toggle-off.  
+
+By binding another function named `underbar_show`, it will be easy to inspect the variable.  
+For example:
+```fish
+# bind alt+i
+$ bind \ei underbar_show
+# then press alt+i, `set --show underbar` is executed, and prior content is shown.
+```
 
 # License
 

@@ -1,4 +1,4 @@
-function underbar --description 'wrapp a command to save stdout in a dedicated variable.'
+function underbar --description 'wrap a command to save stdout in a dedicated variable.'
   if not commandline | string length -q
     commandline -r $history[1]
   end
