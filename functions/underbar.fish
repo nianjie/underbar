@@ -6,7 +6,7 @@ function underbar --description 'wrap a command to save stdout in a dedicated va
   set -l process (commandline | string collect)
   if set process (string replace -r -- '^set -g underbar \(' '' $process)
      and set process (string replace -r -- '\)$' '' $process)
-     commandline --replace -- $process
+     commandline -r -- $process
   else
     set -l cursor (commandline -C)
     commandline -a ')'
