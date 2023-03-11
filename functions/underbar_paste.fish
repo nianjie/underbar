@@ -1,5 +1,6 @@
 function underbar_paste --description 'paste selected item to command line from a menu generated from items contained in $underbar'
   if count $underbar &>/dev/null
+    printf '\n'
     list_underbar
   else
     printf \a
