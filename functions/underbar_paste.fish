@@ -1,10 +1,18 @@
 function underbar_paste --description 'paste selected item to command line from a menu generated from items contained in $underbar'
   if count $underbar &>/dev/null
     printf '\n'
-    list_underbar
+    if type -q fzf 
+      list_underbar_turbo
+    else
+      list_underbar
+    end
   else
     printf \a
   end
+end
+
+function list_underbar_turbo
+  commandline -i -- (printf '%s\n' $underbar | fzf)
 end
 
 function list_underbar --no-scope-shadowing
