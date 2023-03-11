@@ -24,10 +24,11 @@ function list_underbar --no-scope-shadowing
   set -l msg (_ 'Select item by letter or number: ')
   read -l -p "echo '$msg'" choice
   if test -z "$choice"
-      return 0
+    commandline -f repaint
   else if string match -q -r '^[a-z]$' $choice
-      # Convert the letter to an index number.
-      set choice (contains -i $choice $letters)
+    # Convert the letter to an index number.
+    set choice (contains -i $choice $letters)
+    commandline -i -- $underbar[$choice]
   end
-  commandline -i -- $underbar[$choice]
+  
 end
