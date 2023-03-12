@@ -43,10 +43,9 @@ $ set --show underbar
 
 By pressing the binding key again, the wrap is toggle-off.  
 
-### Bonus
+## Bonus
 `underbar_paste`(default bind to <kbd>alt</kbd>+<kbd>i</kbd>)
 
----
 This function allows user to select one of items the `$underbar` variable contains to insert into current command line to complete.
 
 If fzf is available, items can be filtered out.
@@ -54,7 +53,6 @@ Without fzf, it will show items in `cdh` style.
 
 `underbar_show`
 
----
 It inspects the variable. 
 
 As it will repaint the command line after showing information, by binding to a key , it will tell you what is saved in the `$underbar` as typing commands with no distraction.
