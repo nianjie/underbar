@@ -15,12 +15,14 @@
 ```fish
 $ omf install underbar
 ```
-
+The installation also attempts to add following key sequences.
+* bind \eg underbar #<kbd>alt</kbd>+<kbd>g</kbd>
+* bind \ei underbar_paste #<kbd>alt</kbd>+<kbd>i</kbd>
 
 ## Usage
 This plugin wraps a command so the contents of stdout will be captured into a dedicated variable, named `underbar`.
-It is supposed to work with a custom key binding.  
-The default key binding is not provided, so after the installation, bind a preferred key sequence with this plugin before use.  
+It is supposed to work with a custom key binding(default is <kbd>alt</kbd>+<kbd>g</kbd>).
+
 For example:
 ```fish
 # bind alt+g
@@ -31,7 +33,7 @@ bar'
 # will become
 $ set -g underbar (echo 'foo
 bar')
-# then the content of stdout is kept in the global variable `underbar' after execution, and you can manipulate it like any other Fish variables,
+# then the content of stdout is kept in the global variable `underbar' after execution, and you can manipulate it like any other fish variables,
 # or inspect.
 $ set --show underbar
 ```
@@ -42,14 +44,21 @@ $ set --show underbar
 By pressing the binding key again, the wrap is toggle-off.  
 
 ### Bonus
-By binding another function named `underbar_show`, it will be easy to inspect the variable.  
-For example:
+`underbar_paste`(default bind to <kbd>alt</kbd>+<kbd>i</kbd>)
+
+This function allows user to select one of items the `$underbar` variable contains to insert into current command line to complete.
+If fzf is available, items can be filtered out.
+
+`underbar_show`
+
+It inspects the variable. 
+
+As it will repaint the command line after showing information, by binding to a key , it will tell you what is saved in the `$underbar` with no distraction.
 ```fish
 # bind alt+i
 $ bind \ei underbar_show
 # then press alt+i, `set --show underbar` is executed
 ```
-Or binding another function named `underbar_paste`, it will be easy to select one of items the `underbar` variable contains to insert into current command line to complete current command.
 
 # License
 
