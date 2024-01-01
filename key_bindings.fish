@@ -9,9 +9,12 @@ for func in $funcs
     and if not bind -s $$func &>/dev/null
       bind $$func $func
     else
-      set -a conflicted (printf 'key-sequence %s is bound to %s.' (bind $$func | string split ' ' --)[-2..-1])
+      set -l cmd_name (bind $$func | string split ' ' --)[-1]
+      if not contains $cmd_name $funcs
+        set -a conflicted (printf 'key-sequence %s is bound to %s.' $cmd_name)
+      end
     end
 end
 for conflict in $conflicted
-  	printf '[omf-underbar]\aOops, %s\n' $conflict
+    printf '[omf-underbar]\aOops, %s\n' $conflict
 end
